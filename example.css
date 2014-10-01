@@ -1,0 +1,32 @@
+html {
+  font-family: sans-serif;
+}
+
+div.multi-select {
+  padding: 25px;
+  width: 400px;
+}
+
+div.multi-select ul {
+  background: #fff;
+  list-style: none;
+  padding: 0;
+  height: 200px;
+  overflow-y: auto;
+  margin-top: 10px;
+  border: 1px solid #f0f0f0;
+}
+
+div.multi-select input {
+  width: 100%;
+}
+
+div.multi-select li {
+  cursor: pointer;
+  border-top: 1px solid #f0f0f0;
+}
+
+div.multi-select li:hover {
+  background: #f0f0f0;
+}
+
