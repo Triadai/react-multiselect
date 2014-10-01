@@ -1,10 +1,10 @@
-# Reactive Multi-Select
+# Reactive MultiSelect
 
-Reactive Multi-Select is a client-side web component that presents the user with a list of items and allows them to filter and select one or more of them.
+Reactive MultiSelect is a client-side web component that presents the user with a list of items and allows them to filter and select one or more of them.
 
-It is implemented in JavaScript using the React.js library.
+Reactive MultiSelect is implemented using the [React JavaScript library](http://facebook.github.io/react "React JavaScript library").
 
-![Reactive Multi-Select Example](http://i.imgur.com/VLuM9W0.png "Reactive Multi-Select Example")
+![Reactive MultiSelect Example](http://i.imgur.com/VLuM9W0.png "Reactive MultiSelect Example")
 
 ## Features
 
@@ -32,12 +32,13 @@ $ http-server
 
 ## Options
 
-The following options can be passed to the multiSelect component to customize its behavior.  Each option
+The options below can be passed to the MultiSelect component to customize its behavior.  Each option
 is shown with its default value and further explained below.
 
 ```
+/** @jsx React.DOM */
 <multiSelect
-  items={[]} // 
+  items={[]}
   placeholder={''}
   onChange={function(selectedIds) {}}
 />
@@ -49,12 +50,12 @@ Items to display in the list.  Each item must contain an id and text key:value.
 
 ### placeholder
 
-  Text to initially display in the filter input box
+Text to initially display in the filter input box
 
 ### onChange
 
-  Called when items are selected or deselected.  The first parameter is an array containing the ids of
-  items in the list that are currently selected.
+Called when items are selected or deselected.  The first parameter is an array containing the ids of
+items in the list that are currently selected.
 
 ## CSS
 
