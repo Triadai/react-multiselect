@@ -33,7 +33,7 @@ $ http-server
 ## Options
 
 The options below can be passed to the MultiSelect component to customize its behavior.  Each option
-is shown with its default value and further explained below.
+is shown with its default value and further explained.
 
 ```
 /** @jsx React.DOM */
@@ -46,11 +46,12 @@ is shown with its default value and further explained below.
 
 ### items
 
-Items to display in the list.  Each item must contain an id and text key:value.
+Items to display in the list.  Each item must contain an id property to identify the item and a text property to
+display in the item list.
 
 ### placeholder
 
-Text to initially display in the filter input box
+Text to initially display in the filter input box.
 
 ### onChange
 
