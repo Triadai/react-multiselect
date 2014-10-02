@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-var example = React.createClass({
+var basic = React.createClass({
   getDefaultProps: function() {
     return {
       items: [
@@ -43,5 +43,4 @@ var example = React.createClass({
     return <multiSelect items={this.props.items} onChange={this.handleChange} />
   }
 })
-
-React.renderComponent(<example/>, document.getElementById('multiselect-basic'))
+React.renderComponent(<basic/>, document.getElementById('multiselect-basic'))

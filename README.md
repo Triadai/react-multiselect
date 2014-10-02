@@ -24,7 +24,7 @@ update dynamically.
 
 ## Examples
 
-An example is included with the project.  You can run it locally using nodejs to serve the files.
+Some examples are included with the project.  You can run them locally using nodejs to serve the files.
 
 Run the following commands in the project directory, and then navigate to the URL displayed.
 
@@ -43,7 +43,7 @@ is shown with its default value and further explained.
 <multiSelect
   items={[]}
   placeholder={''}
-  onChange={function(selectedIds) {}}
+  onChange={function(selectedItems) {}}
 />
 ```
 
@@ -58,8 +58,8 @@ Text to initially display in the filter input box.
 
 ### onChange
 
-Called when items are selected or deselected.  The first parameter is an array containing the ids of
-items in the list that are currently selected.
+Called when items are selected or deselected.  The parameter is an object containing the ids of
+items in the list as keys and either true or false as the values to indicate whether or not an item is selected.
 
 ## CSS
 
