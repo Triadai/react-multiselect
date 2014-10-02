@@ -44,4 +44,4 @@ var example = React.createClass({
   }
 })
 
-React.renderComponent(<example/>, document.getElementById('example'))
+React.renderComponent(<example/>, document.getElementById('multiselect-basic'))
