@@ -30,12 +30,7 @@ var multiSelect = React.createClass({
     }
   },
   handleItemClick: function(item) {
-    // Toggle item selection
-    var selectedItems = this.state.selectedItems
-    selectedItems[item.id] = !selectedItems[item.id]    
-    this.setState({ selectedItems: selectedItems })
-    // Call user's event handler
-    this.props.onChange(Object.keys(this.state.selectedItems))
+    this.setSelected(item, !this.state.selectedItems[item.id])
   },
   handleInputChange: function(event) {
     // Keep track of every change to the filter input
@@ -53,34 +48,26 @@ var multiSelect = React.createClass({
     />
   },
   selectAll: function(event) {
-    this.setAllSelected(true);
+    this.setSelected(this.props.items, true)
   },
   selectNone: function(event) {
-    this.setAllSelected(false);
+    this.setSelected(this.props.items, false)
   },
-  setAllSelected: function(selected) {
-    var selectedItems = {}
-    for (var i in this.props.items) {
-      var item = this.props.items[i]
-      if (selected) {
-        selectedItems[item.id] = true
-      }
-      else {
-        // Delete instead of set to false so we can just get all of
-        // selectedItems keys in order to produce a list of ids
-        // of items that are selected
-        delete selectedItems[item.id]
-      }
+  setSelected: function(items, selected) {
+    // Accept an array or a single item
+    if (!(items instanceof Array)) items = [items]
+    var selectedItems = this.state.selectedItems
+    for (var i in items) {
+      selectedItems[items[i].id] = selected
     }
     this.setState({ selectedItems: selectedItems })
-    // Call the user's event handler
-    this.props.onChange(Object.keys(selectedItems))
+    this.props.onChange(selectedItems)
   },
   render: function() {
     return (
       <div className="multi-select">
         <input onChange={this.handleInputChange} value={this.state.filter} placeholder={this.props.placeholder} />
-        <ul className="scrollable">{this.props.items.map(this.createItem)}</ul>
+        <ul>{this.props.items.map(this.createItem)}</ul>
         <button onClick={this.selectAll}>Select all</button>&nbsp;
         <button onClick={this.selectNone}>Select none</button>
       </div>
