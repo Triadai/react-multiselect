@@ -1,3 +1,6 @@
+Please get in touch with me if you have any issues or suggestions for this project.  I am actively developing and taking
+requests for new features.  You can contact me via e-mail at [james@neodon.com](mailto:james@neodon.com).
+
 # Reactive MultiSelect
 
 Reactive MultiSelect is a client-side web component that presents the user with a list of items and allows them to filter and select one or more of them.
