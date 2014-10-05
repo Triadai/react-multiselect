@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-var multiSelectItem = React.createClass({
+var MultiSelectItem = React.createClass({
   getDefaultProps: function() {
     return {
       visible: true,
@@ -15,7 +15,7 @@ var multiSelectItem = React.createClass({
     return <li onClick={this.props.onClick} style={style}>{this.props.text}</li>
   }
 })
-var multiSelect = React.createClass({
+var MultiSelect = React.createClass({
   getDefaultProps: function() {
     return {
       items: [],
@@ -39,7 +39,7 @@ var multiSelect = React.createClass({
   createItem: function(item) {
     // Filter item visibility based on the filter input
     var regex = new RegExp('.*'+this.state.filter+'.*', 'i')
-    return <multiSelectItem
+    return <MultiSelectItem
       key={item.id}
       text={item.text}
       onClick={this.handleItemClick.bind(this, item)}
@@ -65,7 +65,7 @@ var multiSelect = React.createClass({
   },
   render: function() {
     return (
-      <div className="multi-select">
+      <div className="multiselect">
         <input onChange={this.handleInputChange} value={this.state.filter} placeholder={this.props.placeholder} />
         <ul>{this.props.items.map(this.createItem)}</ul>
         <button onClick={this.selectAll}>Select all</button>&nbsp;
@@ -74,3 +74,8 @@ var multiSelect = React.createClass({
     )
   }
 })
+if (typeof module === 'undefined') {
+  window.MultiSelect = MultiSelect
+} else {
+  module.exports = MultiSelect
+}

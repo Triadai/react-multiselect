@@ -40,7 +40,7 @@ var basic = React.createClass({
     // Do something with the selected item ids
   },
   render: function() {
-    return <multiSelect items={this.props.items} onChange={this.handleChange} />
+    return <MultiSelect items={this.props.items} onChange={this.handleChange} />
   }
 })
 React.renderComponent(<basic/>, document.getElementById('multiselect-basic'))

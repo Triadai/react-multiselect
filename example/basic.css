@@ -2,12 +2,12 @@ html {
   font-family: sans-serif;
 }
 
-div.multi-select {
+div.multiselect {
   padding: 25px;
   width: 400px;
 }
 
-div.multi-select ul {
+div.multiselect ul {
   background: #fff;
   list-style: none;
   padding: 0;
@@ -17,16 +17,16 @@ div.multi-select ul {
   border: 1px solid #f0f0f0;
 }
 
-div.multi-select input {
+div.multiselect input {
   width: 100%;
 }
 
-div.multi-select li {
+div.multiselect li {
   cursor: pointer;
   border-top: 1px solid #f0f0f0;
 }
 
-div.multi-select li:hover {
+div.multiselect li:hover {
   background: #f0f0f0;
 }
 

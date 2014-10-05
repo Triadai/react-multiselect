@@ -1,13 +1,13 @@
 Please get in touch with me if you have any issues or suggestions for this project.  I am actively developing and taking
 requests for new features.  You can contact me via e-mail at [james@neodon.com](mailto:james@neodon.com).
 
-# Reactive MultiSelect
+# React-MultiSelect
 
-Reactive MultiSelect is a client-side web component that presents the user with a list of items and allows them to filter and select one or more of them.
+React-MultiSelect is a client-side [React](http://facebook.github.io/react "React") component that presents the user with a list of items and allows them to filter and select one or more of them.
 
-Reactive MultiSelect is implemented using the [React JavaScript library](http://facebook.github.io/react "React JavaScript library").
+I am currently working on a jQuery plugin wrapper for this project.
 
-![Reactive MultiSelect Example](http://i.imgur.com/VLuM9W0.png "Reactive MultiSelect Example")
+![React-MultiSelect Example](http://i.imgur.com/VLuM9W0.png "React-MultiSelect Example")
 
 ## Features
 
@@ -35,12 +35,11 @@ $ http-server
 
 ## Options
 
-The options below can be passed to the MultiSelect component to customize its behavior.  Each option
-is shown with its default value and further explained.
+The options below can be passed to the MultiSelect component to customize its behavior.
 
 ```
 /** @jsx React.DOM */
-<multiSelect
+<MultiSelect
   items={[]}
   placeholder={''}
   onChange={function(selectedItems) {}}
@@ -66,12 +65,12 @@ items in the list as keys and either true or false as the values to indicate whe
 You can use the following CSS selectors to customize the appearance of the component.
   
 ```
-div.multi-select
-div.multi-select input
-div.multi-select ul
-div.multi-select li
-div.multi-select li:hover
-div.multi-select button
+div.multiselect
+div.multiselect input
+div.multiselect ul
+div.multiselect li
+div.multiselect li:hover
+div.multiselect button
 ```
 
 ## TODO
