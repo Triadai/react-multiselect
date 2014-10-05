@@ -8,11 +8,11 @@ var MultiSelectItem = React.createClass({displayName: 'MultiSelectItem',
     }
   },
   render: function() {
-    // Highlight selected items
-    var style = {background: this.props.selected ? '#ddf' : 'none'}
-    // Hide items that are marked as not visible
-    if (!this.props.visible) style.display = 'none'
-    return React.DOM.li({onClick: this.props.onClick, style: style}, this.props.text)
+    return React.DOM.li({
+      className: this.props.selected ? 'selected' : 'deselected', 
+      onClick: this.props.onClick, 
+      style: this.props.visible ? {} : {display: 'none'}
+    }, this.props.text)
   }
 })
 var MultiSelect = React.createClass({displayName: 'MultiSelect',
