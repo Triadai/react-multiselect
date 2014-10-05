@@ -30,3 +30,11 @@ div.multiselect li:hover {
   background: #f0f0f0;
 }
 
+div.multiselect .selected {
+  background: #ddddff;
+}
+
+div.multiselect .selected:hover {
+  background: #e8e8ff;
+}
+
