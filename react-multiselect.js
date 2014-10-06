@@ -4,7 +4,7 @@ var MultiSelectItem = React.createClass({displayName: 'MultiSelectItem',
     return {
       visible: true,
       selected: false,
-      onChange: function() {}
+      onClick: function() {}
     }
   },
   render: function() {
@@ -20,17 +20,19 @@ var MultiSelect = React.createClass({displayName: 'MultiSelect',
     return {
       items: [],
       placeholder: 'Enter some filter text',
-      onChange: function() {}
+      onChange: function() {},
+      onItemSelected: function() {},
+      onItemDeselected: function() {}
     }
   },
   getInitialState: function() {
     return {
-      selectedItems: {},
+      selections: {},
       filter: ''
     }
   },
   handleItemClick: function(item) {
-    this.setSelected(item, !this.state.selectedItems[item.id])
+    this.setSelected(item, !this.state.selections[item.id])
   },
   handleInputChange: function(event) {
     // Keep track of every change to the filter input
@@ -44,7 +46,7 @@ var MultiSelect = React.createClass({displayName: 'MultiSelect',
       text: item.text, 
       onClick: this.handleItemClick.bind(this, item), 
       visible: regex.test(item.text), 
-      selected: this.state.selectedItems[item.id] ? true : false}
+      selected: this.state.selections[item.id] ? true : false}
     )
   },
   selectAll: function(event) {
@@ -56,12 +58,16 @@ var MultiSelect = React.createClass({displayName: 'MultiSelect',
   setSelected: function(items, selected) {
     // Accept an array or a single item
     if (!(items instanceof Array)) items = [items]
-    var selectedItems = this.state.selectedItems
+    var selections = this.state.selections
     for (var i in items) {
-      selectedItems[items[i].id] = selected
+      selections[items[i].id] = selected
+      if (selected)
+        this.props.onItemSelected(items[i])
+      else
+        this.props.onItemDeselected(items[i])
     }
-    this.setState({ selectedItems: selectedItems })
-    this.props.onChange(selectedItems)
+    this.setState({ selections: selections })
+    this.props.onChange(selections)
   },
   render: function() {
     return (

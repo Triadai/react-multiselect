@@ -36,11 +36,18 @@ var basic = React.createClass({
       ]
     }
   },
-  handleChange: function(selectedItemIds, event) {
-    // Do something with the selected item ids
+  handleItemSelected: function(item) {
+    console.log('Item selected: '+item.id+' - '+item.text)
+  },
+  handleItemDeselected: function(item) {
+    console.log('Item deselected: '+item.id+' - '+item.text)
   },
   render: function() {
-    return <MultiSelect items={this.props.items} onChange={this.handleChange} />
+    return <MultiSelect
+      items={this.props.items}
+      onItemSelected={this.handleItemSelected}
+      onItemDeselected={this.handleItemDeselected}
+    />
   }
 })
 React.renderComponent(<basic/>, document.getElementById('multiselect-basic'))

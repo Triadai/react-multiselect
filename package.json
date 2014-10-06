@@ -1,6 +1,6 @@
 {
   "name": "react-multiselect",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "James Barton <james@neodon.com>",
   "license": "MIT",
   "description": "A client-side React component that presents the user with a list of items and allows them to filter and select one or more of them.",
