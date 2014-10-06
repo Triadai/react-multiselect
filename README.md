@@ -76,12 +76,12 @@ Text to initially display in the filter input box.  Defaults to an empty string.
 ### onChange(selections)
 
 Called after items are selected or deselected.  The parameter is an object where the keys are item ids and the values
-are true or false to indicate whether or not an item is selected.  Use this even when you need a summary of changes
+are true or false to indicate whether or not an item is selected.  Use this event when you need a summary of changes
 and not individual selections or deselections as they occur.
 
 ### onItemSelected(item)
 
-Called whenever an item is selected.  The parameter is an object containing the item's id and text.  Use this when you
+Called whenever an item is selected.  The parameter is the item.  Use this when you
 want to capture selections as they occur.
 
 ### onItemDeselected(item)

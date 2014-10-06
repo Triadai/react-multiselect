@@ -25,30 +25,23 @@ var chained = React.createClass({
   getInitialState: function() {
     return {makeSelections: {}}
   },
-  handleMakeChange: function(selections, event) {
+  handleMakeChange: function(selections) {
     this.setState({ makeSelections: selections })
   },
-  handleModelChange: function(selections, event) {
+  handleModelChange: function(selections) {
     // Do something with the selection info
     // selections is an object where the keys are item ids and the values
     // are true or false, indicating the selection status
   },
   render: function() {
-    var makes = this.props.makes.map(
-      // Convert data to the structure that multiselect needs
-      function(make) { return {id: make.id, text: make.name} }.bind(this)
-    )
-    var models = this.props.models.filter(
+    var selectedModels = this.props.models.filter(
       // Filter so only selected items are displayed
       function(model) { return this.state.makeSelections[model.makeId] }.bind(this)
-    ).map(
-      // Convert data to the structure that multiselect needs
-      function(model) { return {id: model.id, text: model.name} }.bind(this)
     )
     return (
       <div>
-        <MultiSelect items={makes} onChange={this.handleMakeChange} />
-        <MultiSelect items={models} onChange={this.handleModelChange} />
+        <MultiSelect items={this.props.makes} onChange={this.handleMakeChange} />
+        <MultiSelect items={selectedModels} onChange={this.handleModelChange} />
       </div>
     )
   }

@@ -4,6 +4,7 @@ var MultiSelectItem = React.createClass({
     return {
       visible: true,
       selected: false,
+      text: '',
       onClick: function() {}
     }
   },
@@ -15,6 +16,7 @@ var MultiSelectItem = React.createClass({
     >{this.props.text}</li>
   }
 })
+
 var MultiSelect = React.createClass({
   getDefaultProps: function() {
     return {
@@ -34,18 +36,24 @@ var MultiSelect = React.createClass({
   handleItemClick: function(item) {
     this.setSelected(item, !this.state.selections[item.id])
   },
-  handleInputChange: function(event) {
+  handleFilterChange: function(event) {
     // Keep track of every change to the filter input
     this.setState({ filter: event.target.value })
   },
+  escapeRegExp: function(str) {
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  },
   createItem: function(item) {
     // Filter item visibility based on the filter input
-    var regex = new RegExp('.*'+this.state.filter+'.*', 'i')
+    var regex = new RegExp('.*'+this.escapeRegExp(this.state.filter)+'.*', 'i')
+    var text = 'text' in item ? item.text
+             : 'name' in item ? item.name
+             : item.id
     return <MultiSelectItem
       key={item.id}
-      text={item.text}
+      text={text}
       onClick={this.handleItemClick.bind(this, item)}
-      visible={regex.test(item.text)}
+      visible={regex.test(text)}
       selected={this.state.selections[item.id] ? true : false}
     />
   },
@@ -58,9 +66,11 @@ var MultiSelect = React.createClass({
   setSelected: function(items, selected) {
     // Accept an array or a single item
     if (!(items instanceof Array)) items = [items]
+    
     var selections = this.state.selections
     for (var i in items) {
       selections[items[i].id] = selected
+      
       if (selected)
         this.props.onItemSelected(items[i])
       else
@@ -72,7 +82,7 @@ var MultiSelect = React.createClass({
   render: function() {
     return (
       <div className="multiselect">
-        <input onChange={this.handleInputChange} value={this.state.filter} placeholder={this.props.placeholder} />
+        <input onChange={this.handleFilterChange} value={this.state.filter} placeholder={this.props.placeholder} />
         <ul>{this.props.items.map(this.createItem)}</ul>
         <button onClick={this.selectAll}>Select all</button>&nbsp;
         <button onClick={this.selectNone}>Select none</button>
@@ -80,6 +90,7 @@ var MultiSelect = React.createClass({
     )
   }
 })
+
 if (typeof module === 'undefined') {
   window.MultiSelect = MultiSelect
 } else {
