@@ -20,6 +20,17 @@ module.exports = function(grunt) {
         files: {
           '<%= pkg.name %>.js': 'src/<%= pkg.name %>.jsx'
         }
+      },
+      dynamic_mappings: {
+        files: [
+          {
+            expand: true,
+            cwd: 'example/src/',
+            src: ['**/*.jsx'],
+            dest: 'example/',
+            ext: '.js'
+          }
+        ]
       }
     }
   });
