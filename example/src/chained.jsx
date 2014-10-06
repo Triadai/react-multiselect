@@ -18,8 +18,8 @@ var models = [
 var chained = React.createClass({
   getDefaultProps: function() {
     return {
-      makes: makes,
-      models: models
+      makes: [],
+      models: []
     }
   },
   getInitialState: function() {
@@ -53,4 +53,4 @@ var chained = React.createClass({
     )
   }
 })
-React.renderComponent(<chained/>, document.getElementById('multiselect-chained'))
+React.renderComponent(<chained makes={makes} models={models} />, document.getElementById('multiselect-chained'))
