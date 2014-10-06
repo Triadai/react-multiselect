@@ -1,11 +1,11 @@
-Please get in touch with me if you have any issues or suggestions for this project.  I am actively developing and taking
-requests for new features.  You can contact me via e-mail at [james@neodon.com](mailto:james@neodon.com).
+Please get in touch with me if you have any issues or suggestions for this project.  It's under active development
+and I'm taking requests for new features or bug fixes. You can contact me via e-mail at
+[james@neodon.com](mailto:james@neodon.com).
 
 # React-MultiSelect
 
-React-MultiSelect is a client-side [React](http://facebook.github.io/react "React") component that presents the user with a list of items and allows them to filter and select one or more of them.
-
-I am currently working on a jQuery plugin wrapper for this project.
+React-MultiSelect is a client-side [React](http://facebook.github.io/react "React") component that presents the user
+with a list of items and allows them to filter and select one or more of them.
 
 ![React-MultiSelect Example](http://i.imgur.com/VLuM9W0.png "React-MultiSelect Example")
 
@@ -13,14 +13,14 @@ I am currently working on a jQuery plugin wrapper for this project.
 
 ### Filters
 
-Enter some text in the input box to filter the items listed.  Selections are remembered even if the items
-are momentarily not visible.
+Enter some text in the input box to filter the items listed. Selections are remembered even if the items are
+momentarily not visible.
 
 ### Dynamic Data
 
-Supports loading item lists dynamically with AJAX requests.  Selections will remain across requests as long as the item ids stay the same.
-This can be helpful where you need the items in one list to depend on the selections in another list and want them to
-update dynamically.
+Supports loading item lists dynamically with AJAX requests.  Selections will remain across requests as long as the item
+ids stay the same. This can be helpful where you need the items in one list to depend on the selections in another list
+and want them to update dynamically.
 
 ## Examples
 
@@ -35,15 +35,33 @@ $ http-server
 
 ## Options
 
-The options below can be passed to the MultiSelect component to customize its behavior.
+The options below can be passed to the React-MultiSelect component to customize its behavior.
+
+### JSX
 
 ```
 /** @jsx React.DOM */
 <MultiSelect
   items={[]}
   placeholder={''}
-  onChange={function(selectedItems) {}}
+  onChange={function(selections) {}}
+  onItemSelected={function(item) {}}
+  onItemDeselected={function(item) {}}
 />
+```
+
+### JavaScript
+
+```
+React.renderComponent(
+  MultiSelect({
+    items: {},
+    placeholder: '',
+    onChange: function(selections) {},
+    onItemSelected: function(item) {},
+    onItemDeselected: function(item) {}
+  }), document.getElementById('multiselect'))
+)
 ```
 
 ### items
@@ -53,12 +71,22 @@ display in the item list.
 
 ### placeholder
 
-Text to initially display in the filter input box.
+Text to initially display in the filter input box.  Defaults to an empty string.
 
-### onChange
+### onChange(selections)
 
-Called when items are selected or deselected.  The parameter is an object containing the ids of
-items in the list as keys and either true or false as the values to indicate whether or not an item is selected.
+Called after items are selected or deselected.  The parameter is an object where the keys are item ids and the values
+are true or false to indicate whether or not an item is selected.  Use this even when you need a summary of changes
+and not individual selections or deselections as they occur.
+
+### onItemSelected(item)
+
+Called whenever an item is selected.  The parameter is an object containing the item's id and text.  Use this when you
+want to capture selections as they occur.
+
+### onItemDeselected(item)
+
+Corresponding event for onItemSelected that is called whenever an item is deselected.
 
 ## CSS
 
@@ -66,15 +94,14 @@ You can use the following CSS selectors to customize the appearance of the compo
   
 ```
 div.multiselect
-div.multiselect input
+div.multiselect input // Filter text
 div.multiselect ul
 div.multiselect li
 div.multiselect li:hover
 div.multiselect button
+div.multiselect .selected // Style for a selected item
+div.multiselect .deselected // Style for a deselected item
 ```
 
-## TODO
- * Getting started
- * More examples
- * More options
+See example/basic.css to get started with styling.
 
