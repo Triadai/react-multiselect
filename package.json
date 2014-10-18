@@ -1,6 +1,6 @@
 {
   "name": "react-multiselect",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "James Barton <james@neodon.com>",
   "license": "MIT",
   "description": "A client-side React component that presents the user with a list of items and allows them to filter and select one or more of them.",
@@ -8,7 +8,8 @@
     "react",
     "multi",
     "select",
-    "multiselect"
+    "multiselect",
+    "react-component"
   ],
   "homepage": "https://github.com/neodon/react-multiselect",
   "bugs": {

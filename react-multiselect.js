@@ -9,10 +9,9 @@ var MultiSelectItem = React.createClass({displayName: 'MultiSelectItem',
     }
   },
   render: function() {
-    return React.DOM.li({
+    return this.props.visible && React.DOM.li({
       className: this.props.selected ? 'selected' : 'deselected', 
-      onClick: this.props.onClick, 
-      style: this.props.visible ? {} : {display: 'none'}
+      onClick: this.props.onClick
     }, this.props.text)
   }
 })

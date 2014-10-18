@@ -19,8 +19,8 @@ momentarily not visible.
 ### Dynamic Data
 
 Supports loading item lists dynamically with AJAX requests.  Selections will remain across requests as long as the item
-ids stay the same. This can be helpful where you need the items in one list to depend on the selections in another list
-and want them to update dynamically.
+ids stay the same. This can be helpful where you need the items in one multiselect to depend on the selections in another
+multiselect and want them to update dynamically.
 
 ## Examples
 
