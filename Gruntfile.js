@@ -2,26 +2,16 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - '+
-          '<%= grunt.template.today("yyyy-mm-dd") %> */\n',
-        compress: {
-          drop_console: true
-        }
-      },
-      build: {
-        src: '<%= pkg.name %>.js',
-        dest: '<%= pkg.name %>.min.js'
-      }
+    clean: {
+      prod: ['build/*']
     },
     react: {
-      single_file_output: {
+      prod: {
         files: {
-          '<%= pkg.name %>.js': 'src/<%= pkg.name %>.jsx'
+          'build/<%= pkg.name %>.js': 'src/<%= pkg.name %>.jsx'
         }
       },
-      dynamic_mappings: {
+      example: {
         files: [
           {
             expand: true,
@@ -32,13 +22,41 @@ module.exports = function(grunt) {
           }
         ]
       }
+    },
+    jshint: {
+      prod: ['Gruntfile.js', 'build/*.js']
+    },
+    uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - '+
+          '<%= grunt.template.today("yyyy-mm-dd") %> */\n',
+        compress: {
+          drop_console: true
+        }
+      },
+      build: {
+        src: 'build/<%= pkg.name %>.js',
+        dest: 'build/<%= pkg.name %>.min.js'
+      }
+    },
+    copy: {
+      prod: {
+        expand: true,
+        flatten: true,
+        src: 'build/react-multiselect.*',
+        dest: '.',
+        filter: 'isFile',
+      }
     }
   });
 
-  // Load the plugin that provides the "uglify" task.
+  grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-react');
   
   // Default task(s).
-  grunt.registerTask('default', ['react', 'uglify']);
+  grunt.registerTask('default', ['clean', 'react', 'uglify', 'copy']);
 };
