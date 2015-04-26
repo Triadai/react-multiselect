@@ -1,6 +1,6 @@
 {
   "name": "react-multiselect",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "author": "James Barton <james@neodon.com>",
   "license": "MIT",
   "description": "A client-side React component that presents the user with a list of items and allows them to filter and select one or more of them.",
@@ -20,10 +20,11 @@
     "type": "git",
     "url": "https://github.com/neodon/react-multiselect"
   },
-  "files": [
-    "src/"
-  ],
-  "main": "main.js",
+  "main": "react-multiselect.js",
+  "dependencies": {
+    "react": "0.11.x",
+    "react-tools": "0.11.x"
+  },
   "devDependencies": {
     "browserify": "3.44.x",
     "envify": "1.2.x",
@@ -34,8 +35,6 @@
     "grunt-contrib-jshint": "0.10.x",
     "grunt-contrib-nodeunit": "0.4.x",
     "grunt-contrib-uglify": "0.5.x",
-    "grunt-react": "0.9.x",
-    "react": "0.11.x",
-    "react-tools": "0.11.x"
+    "grunt-react": "0.9.x"
   }
 }
