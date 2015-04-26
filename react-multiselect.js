@@ -13,7 +13,7 @@
     root.MultiSelect = factory(root.React);
   }
 }(this, function(React) {
-  var MultiSelectItem = React.createClass({displayName: 'MultiSelectItem',
+  var MultiSelectItem = React.createClass({displayName: "MultiSelectItem",
     getDefaultProps: function() {
       return {
         visible: true,
@@ -23,14 +23,14 @@
       }
     },
     render: function() {
-      return this.props.visible && React.DOM.li({
+      return this.props.visible && React.createElement("li", {
         className: this.props.selected ? 'selected' : 'deselected', 
         onClick: this.props.onClick
       }, this.props.text)
     }
   })
 
-  var MultiSelect = React.createClass({displayName: 'MultiSelect',
+  var MultiSelect = React.createClass({displayName: "MultiSelect",
     getDefaultProps: function() {
       return {
         items: [],
@@ -62,7 +62,7 @@
       var text = 'text' in item ? item.text
                : 'name' in item ? item.name
                : item.id
-      return MultiSelectItem({
+      return React.createElement(MultiSelectItem, {
         key: item.id, 
         text: text, 
         onClick: this.handleItemClick.bind(this, item), 
@@ -94,11 +94,11 @@
     },
     render: function() {
       return (
-        React.DOM.div({className: "multiselect"}, 
-          React.DOM.input({onChange: this.handleFilterChange, value: this.state.filter, placeholder: this.props.placeholder}), 
-          React.DOM.ul(null, this.props.items.map(this.createItem)), 
-          React.DOM.button({onClick: this.selectAll}, "Select all"), " ", 
-          React.DOM.button({onClick: this.selectNone}, "Select none")
+        React.createElement("div", {className: "multiselect"}, 
+          React.createElement("input", {onChange: this.handleFilterChange, value: this.state.filter, placeholder: this.props.placeholder}), 
+          React.createElement("ul", null, this.props.items.map(this.createItem)), 
+          React.createElement("button", {onClick: this.selectAll}, "Select all"), " ", 
+          React.createElement("button", {onClick: this.selectNone}, "Select none")
         )
       )
     }

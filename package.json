@@ -1,6 +1,6 @@
 {
   "name": "react-multiselect",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "author": "James Barton <james@neodon.com>",
   "license": "MIT",
   "description": "A client-side React component that presents the user with a list of items and allows them to filter and select one or more of them.",
@@ -22,8 +22,8 @@
   },
   "main": "react-multiselect.js",
   "dependencies": {
-    "react": "0.11.x",
-    "react-tools": "0.11.x"
+    "react": "^0.12.2",
+    "react-tools": "^0.12.2"
   },
   "devDependencies": {
     "browserify": "3.44.x",

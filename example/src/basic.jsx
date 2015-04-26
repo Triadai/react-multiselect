@@ -31,7 +31,7 @@ var items = [
   {id: 29, text: 'Grape'},
   {id: 30, text: 'Raisin'}
 ]
-var basic = React.createClass({
+var Basic = React.createClass({
   getDefaultProps: function() {
     return {items: []}
   },
@@ -49,4 +49,5 @@ var basic = React.createClass({
     />
   }
 })
-React.renderComponent(<basic items={items} />, document.getElementById('multiselect-basic'))
+React.renderComponent(<Basic items={items} />, document.getElementById('multiselect-basic'))
+
